@@ -1,17 +1,11 @@
 let url = 'https://6393e57e11ed187986bf9667.mockapi.io/api/curso/employees'
-
 let datoGlobal
 let inputName = document.getElementById('name');
 let inputCity = document.getElementById('city');
 let inputMail = document.getElementById('mail');
 let inputBirthday = document.getElementById('birthday');  
 let labelId = document.getElementById('id');   
-
-
 let containerEmployees = document.getElementById('container-employess'); 
-
-
-
 
 function chargeEmployees(employees) {
     for (let index = 0; index < employees.length; index++) {
@@ -66,9 +60,7 @@ function chargeEmployees(employees) {
         btnDel.forEach(boton => {
         boton.addEventListener("click", deleteUser); 
         });
-
-        
-    }
+   }
 }
 function editUser(){
     i=this.value;
@@ -90,10 +82,8 @@ function saveUser(){
     inputMail.value = " ";
     datoGlobal[i].birthday = inputBirthday.value;
     inputBirthday.value = " ";
-
     containerEmployees.innerHTML =" ";
     chargeEmployees(datoGlobal);
-
 }
 function deleteUser(){
     i=this.value;
@@ -101,25 +91,18 @@ function deleteUser(){
     datoGlobal.splice(i,1)
     containerEmployees.innerHTML =" ";
     chargeEmployees(datoGlobal) 
-
 }
 function userAdd(){
     let aux = {name: inputName.value , city: inputCity.value, birthday: inputBirthday.value, email: inputMail.value, id: (datoGlobal.length+1)}
     datoGlobal.push(aux)
     containerEmployees.innerHTML =" ";
     chargeEmployees(datoGlobal)
-    
-
 }
-
-
 let btnSave = document.getElementById('btnSave');
 btnSave.addEventListener('click', saveUser);
 
 let btnAdd = document.getElementById('btnAdd');
 btnAdd.addEventListener('click', userAdd);
-
-
 
 fetch(url)
     .then (response => response.json())
